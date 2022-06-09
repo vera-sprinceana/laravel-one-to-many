@@ -12,6 +12,7 @@
         <thead>
             <tr>
                 <th scope="col">Title</th>
+                <th scope="col">Category</th>
                 <th scope="col">Content</th>
                 <th scope="col">Image</th>
                 <th scope="col">Slug</th>
@@ -22,14 +23,22 @@
             @forelse($posts as $post)
             <tr>
                 <td>{{ $post->title}}</td>
+                <td>
+
+                    @if( $post->category )
+                        <span class="badge badge-pill badge-{{$post->Category->color}}">{{ $post->Category->label}}</span>
+                    @else
+                        -
+                    @endif
+                </td>
                 <td>{{ $post->content}}</td>
                 <th><img src="{{ $post->image}}" alt="post->image" width="50" ;></th>
                 <td>{{ $post->slug}}</td>
                 <td><a href="{{route('admin.posts.show', $post->id)}}" class="btn btn-primary">View</a></td>
                 <td><a href="{{route('admin.posts.edit', $post->id)}}" class="btn btn-warning">Modifica</a></td>
+                
                 <td>
                     @include('includes.deletePost')
-                    {{-- <a href=" {{ route('admin.posts.edit', $post->id) }} " class="btn btn-danger">Edit</a> --}}
                 </td>
             </tr>
             @empty

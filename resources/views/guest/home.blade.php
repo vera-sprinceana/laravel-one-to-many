@@ -75,6 +75,7 @@
             @auth
             <a href="{{ url('/home') }}">Home</a>
             <a href="{{route('admin.posts.index')}}">Posts</a>
+            <a href="{{route('admin.categories.index')}}">Category</a>
             <a href="{{route('admin.posts.create')}}" class="btn btn-outline-info">Crea nuovo post +</a>
             @else
             <a href="{{ route('login') }}">Login</a>

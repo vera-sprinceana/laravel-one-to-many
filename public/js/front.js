@@ -154,7 +154,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.text-danger[data-v-332fccf4]{\n    color: red;\n}\n\n", ""]);
+exports.push([module.i, "\n.text-danger[data-v-332fccf4]{\r\n    color: red;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -13695,7 +13695,7 @@ var root = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Vera\OneDrive\Desktop\BOOLEAN\esercizi\laravel-auth\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\Vera\OneDrive\Desktop\BOOLEAN\esercizi\laravel-auth-1\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })

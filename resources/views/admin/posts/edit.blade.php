@@ -11,6 +11,18 @@
           <input type="text" class="form-control" id="title" aria-describedby="emailHelp" name="title" value="{{old('title', $post->title)}} ">
         </div>
         <div class="form-group">
+          <label for="category">Category</label>
+          <select name="category_id" id="category">
+              <option value="">Nessuna Categoria</option>
+              @foreach ($categories as $category )
+                  <option
+                      @if( old( 'category_id', $post->category_id ) == $category->id ) selected @endif
+                      value=" {{ $category->id }} "
+                      >{{ $category->label }}</option>
+              @endforeach
+          </select>
+      </div>
+        <div class="form-group">
           <label for="content">Modifica in contenuto</label>
           <input type="text" class="form-control" id="content" name="content" value="{{old('content', $post->content)}} ">
         </div>

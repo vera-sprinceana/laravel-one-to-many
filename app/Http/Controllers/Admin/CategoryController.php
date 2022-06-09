@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Post;
 use App\Models\Category;
-
-class PostController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts= Post::all();
-        return view('admin.posts.index', compact('posts'));
+        $categories= Category::all();
+        return view('admin.categories.index', compact('categories'));
     }
 
     /**
@@ -27,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        return view('admin.categories.create');
     }
 
     /**
@@ -39,10 +37,10 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data=$request->all();
-        $new_post= new Post();
-        $new_post->fill($data);
-        $new_post->save();
-        return redirect()->route('admin.posts.show', $new_post);
+        $new_category= new Category(); 
+        $new_category->fill($data);
+        $new_category->save();
+        return redirect()->route('admin.categories.show', $new_category);
     }
 
     /**
@@ -51,9 +49,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Category $category)
     {
-        return view('admin.posts.show', compact('post'));
+        return view('admin.categories.show', compact('category'));
     }
 
     /**
@@ -62,10 +60,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Category $category)
     {
         $categories = Category::all();
-        return view('admin.posts.edit', compact('post', 'categories'));
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
@@ -75,12 +73,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, Category $category)
     {
         $data=$request->all();
-        $post['slug'] = Str::slug( $request->title , '-');
-        $post->update($data);
-        return redirect()->route('admin.posts.show', $post)->with('message', 'Hai aggiornato con successo');
+        $category->update($data);
+        return redirect()->route('admin.categories.show', $category)->with('message', 'Hai aggiornato con successo');
     }
 
     /**
@@ -89,9 +86,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Category $category)
     {
-        $post->delete();
-        return redirect()->route('admin.posts.index')->with('message', "Hai eliminato con successo: $post->title");
+        $category->delete();
+        return redirect()->route('admin.categories.index')->with('message', "Hai eliminato con successo: $category->label");
     }
 }
